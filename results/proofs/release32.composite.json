@@ -1,0 +1,8 @@
+{
+  "case": "release32",
+  "receipt_bytes": 256674,
+  "seconds": 70.770487046,
+  "stage": "composite",
+  "threads": "4",
+  "vm_hwm_kb": 2411148
+}

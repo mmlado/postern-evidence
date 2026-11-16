@@ -1,0 +1,335 @@
+[
+  {
+    "case": "checkpoint3",
+    "exec_ms": 68,
+    "segment_po2": [
+      20,
+      20
+    ],
+    "segments": 2,
+    "user_cycles": 1663188
+  },
+  {
+    "case": "checkpoint4",
+    "exec_ms": 100,
+    "segment_po2": [
+      20,
+      20,
+      20
+    ],
+    "segments": 3,
+    "user_cycles": 2492695
+  },
+  {
+    "case": "checkpoint5",
+    "exec_ms": 120,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      19
+    ],
+    "segments": 4,
+    "user_cycles": 3316809
+  },
+  {
+    "case": "checkpoint7",
+    "exec_ms": 145,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      20,
+      19
+    ],
+    "segments": 5,
+    "user_cycles": 4126541
+  },
+  {
+    "case": "checkpoint10",
+    "exec_ms": 183,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "segments": 6,
+    "user_cycles": 5743162
+  },
+  {
+    "case": "checkpoint16",
+    "exec_ms": 249,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      18
+    ],
+    "segments": 10,
+    "user_cycles": 8984927
+  },
+  {
+    "case": "checkpoint3-change",
+    "exec_ms": 122,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      19
+    ],
+    "segments": 4,
+    "user_cycles": 3361039
+  },
+  {
+    "case": "checkpoint7-change",
+    "exec_ms": 233,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      19
+    ],
+    "segments": 9,
+    "user_cycles": 8265200
+  },
+  {
+    "case": "release20",
+    "exec_ms": 22,
+    "segment_po2": [
+      18
+    ],
+    "segments": 1,
+    "user_cycles": 145644
+  },
+  {
+    "case": "release32",
+    "exec_ms": 24,
+    "segment_po2": [
+      18
+    ],
+    "segments": 1,
+    "user_cycles": 216120
+  },
+  {
+    "case": "poseidon1",
+    "exec_ms": 61,
+    "segment_po2": [
+      20,
+      20
+    ],
+    "segments": 2,
+    "user_cycles": 1893557
+  },
+  {
+    "case": "poseidon20",
+    "exec_ms": 558,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "segments": 32,
+    "user_cycles": 31860665
+  },
+  {
+    "case": "poseidon32",
+    "exec_ms": 886,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "segments": 51,
+    "user_cycles": 50785803
+  },
+  {
+    "case": "fallback1",
+    "exec_ms": 47,
+    "segment_po2": [
+      20
+    ],
+    "segments": 1,
+    "user_cycles": 931497
+  },
+  {
+    "case": "fallback64",
+    "exec_ms": 129,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      16
+    ],
+    "segments": 6,
+    "user_cycles": 4781122
+  },
+  {
+    "case": "fallback1024",
+    "exec_ms": 1348,
+    "segment_po2": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "segments": 68,
+    "user_cycles": 63537868
+  }
+]

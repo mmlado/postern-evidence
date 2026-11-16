@@ -1,0 +1,8 @@
+{
+  "case": "checkpoint7-change",
+  "receipt_bytes": 4826604,
+  "seconds": 2485.184948036,
+  "stage": "composite",
+  "threads": "4",
+  "vm_hwm_kb": 4831672
+}

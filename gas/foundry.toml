@@ -1,0 +1,18 @@
+# Same compiler settings as risc0-ethereum v3.0.1 contracts/foundry.toml.
+[profile.default]
+src = "src"
+script = "script"
+out = "out"
+libs = []
+via_ir = true
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 10000
+solc_version = "0.8.26"
+bytecode_hash = "none"
+allow_paths = ["lib/risc0-ethereum"]
+remappings = [
+  "risc0/=lib/risc0-ethereum/contracts/src/",
+  "openzeppelin/=lib/risc0-ethereum/lib/openzeppelin-contracts/",
+  "forge-std/=lib/risc0-ethereum/lib/forge-std/src/",
+]

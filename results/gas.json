@@ -1,0 +1,70 @@
+{
+  "anvil": "{\"currentBlockNumber\":\"0x4\",\"currentBlockTimestamp\":1793979227,\"currentBlockHash\":\"0x8a656325892a4ceffb8881f1cf0e20499473ef7ed72911c13f8d43943c80424c\",\"hardFork\":\"Bpo1\",\"transactionOrder\":\"fees\",\"environment\":{\"baseFee\":\"0x23aeb87d\",\"chainId\":31337,\"gasLimit\":\"0x1c9c380\",\"gasPrice\":\"0x5f49827d\"},\"forkConfig\":{\"forkUrl\":null,\"forkBlockNumber\":null,\"forkRetryBackoff\":null},\"network\":\"ethereum\"}",
+  "r0_selector": "0x73c457ba",
+  "release32": {
+    "tx": "0xcaea30896a16aa0a628e059018eb1d71555cd68e8f6126afeb6e2c446bba2284",
+    "eth_estimateGas": 256164,
+    "gas_used": 250164,
+    "calldata": {
+      "bytes": 420,
+      "standard": 5640,
+      "eip7623_floor_tokens": 1410
+    },
+    "execution": 223524,
+    "rejects_wrong_journal": true,
+    "journal": {
+      "as_committed": {
+        "bytes": 356,
+        "standard": 2516,
+        "eip7623_floor_tokens": 629,
+        "sha256_precompile": 204
+      },
+      "packed": {
+        "bytes": 104,
+        "standard": 1508,
+        "eip7623_floor_tokens": 377,
+        "sha256_precompile": 108
+      }
+    }
+  },
+  "checkpoint7": {
+    "tx": "0x92deb9f82fd84bbe99771cc72a3f56efbd5220799592322570a7a1455b4867a0",
+    "eth_estimateGas": 256164,
+    "gas_used": 250164,
+    "calldata": {
+      "bytes": 420,
+      "standard": 5640,
+      "eip7623_floor_tokens": 1410
+    },
+    "execution": 223524,
+    "rejects_wrong_journal": true,
+    "journal": {
+      "as_committed": {
+        "bytes": 648,
+        "standard": 4548,
+        "eip7623_floor_tokens": 1137,
+        "sha256_precompile": 312
+      },
+      "packed": {
+        "bytes": 168,
+        "standard": 2628,
+        "eip7623_floor_tokens": 657,
+        "sha256_precompile": 132
+      }
+    }
+  },
+  "circom_release32": {
+    "tx": "0x6013bd3149e6db109bf506c1d1d942fe475f684de6242f7b8cb4216254002a22",
+    "eth_estimateGas": 36189,
+    "gas_used": 241652,
+    "calldata": {
+      "bytes": 420,
+      "standard": 5868,
+      "eip7623_floor_tokens": 1467
+    },
+    "execution": 214784,
+    "tx_returns": "0x0000000000000000000000000000000000000000000000000000000000000001",
+    "valid_returns": "true",
+    "wrong_public_returns": "false"
+  }
+}

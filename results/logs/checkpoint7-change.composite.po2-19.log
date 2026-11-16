@@ -1,0 +1,26 @@
+R0VM[8262575] PHASES decode=181574 change=4044341 checkpoint_sigs=4012880 total=8260033
+segments=18 user_cycles=8265200
+{"case":"checkpoint7-change","receipt_bytes":4826604,"seconds":2485.184948036,"stage":"composite","threads":"4","vm_hwm_kb":4831672}
+	Command being timed: "./target/release/spike1 prove --case checkpoint7-change --stage composite"
+	User time (seconds): 9494.19
+	System time (seconds): 50.86
+	Percent of CPU this job got: 384%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 41:25.51
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4831672
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 249
+	Minor (reclaiming a frame) page faults: 21569235
+	Voluntary context switches: 13605
+	Involuntary context switches: 215253
+	Swaps: 0
+	File system inputs: 168144
+	File system outputs: 9616
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

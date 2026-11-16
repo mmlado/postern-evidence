@@ -1,0 +1,11 @@
+zk/target/
+gas/out/
+gas/cache/
+gas/broadcast/
+gas/lib/
+anvil.log
+circom/build/*.zkey
+circom/build/*.ptau
+circom/build/*.wtns
+circom/build/*.r1cs
+circom/build/*_js/
