@@ -11,7 +11,7 @@ A LEZ block reaches Logos Blockchain under one sequencer's signature, so the vau
 ## Findings
 
 1. **The release proof runs on the user's machine in about 59 seconds at 1.4 GB** on four cores and 8 GB (35 s composite, 24 s succinct). The Groth16 wrap needs x86 Linux, Docker and about 9 GB. The succinct receipt is zero-knowledge, so the user can hand it to a relayer to wrap without revealing the burn's secret.
-2. **The checkpoint proof for seven keys at a threshold of five takes about 30 minutes on four cores** (22 min composite, 7.7 min succinct, 1.9 min wrap), from public data alone, so any relayer or signer can produce it on a server. With one change of key set inside it, it took about 57 minutes on 6 Nov, before the fix, and its new run is pending. One checkpoint covers every burn up to its block, so the checkpoint cadence trades release latency against proving cost and adds nothing per burn.
+2. **The checkpoint proof for seven keys at a threshold of five takes about 30 minutes on four cores** (22 min composite, 7.7 min succinct, 1.9 min wrap), from public data alone, so any relayer or signer can produce it on a server. With one change of key set inside it, it takes about 62 minutes (44 min composite, 15.5 min succinct, and a wrap like the others). One checkpoint covers every burn up to its block, so the checkpoint cadence trades release latency against proving cost and adds nothing per burn.
 3. **Verifying a receipt on Ethereum costs about 250,200 gas** as a whole transaction (250,176 for a release, 250,152 for a checkpoint, the difference being calldata bytes), of which 223,524 is execution for both. The vault's own logic, such as the nullifier write, the token transfer and the root storage, comes on top and is not measured here.
 4. **A SHA-256 burn tree fits in the LEZ bridge program, a Poseidon tree does not.** A depth-32 SHA-256 path with the nullifier costs about 43k cycles, far under the 10M cap on a public LEZ transaction. One Poseidon insert at depth 32 costs 50.8M cycles on light-poseidon, five times the cap.
 5. **A Circom release proof over a Poseidon tree proves in 2.1 seconds at 616 MB** and verifies for 241,652 gas. It needs a Poseidon root, which finding 4 rules out inside LEZ, and a phase 2 trusted setup of its own. The proposal keeps RISC Zero, whose Groth16 setup already exists.
@@ -69,8 +69,8 @@ The checkpoint proof and the single-signature cases run off LEZ, so the 10M cap 
 | checkpoint n=7 | composite, 2^19 segments | 10 | 22 min | 4.8 GB |
 | checkpoint n=7 | succinct | | 7.7 min | 1.5 GB |
 | checkpoint n=7 | Groth16 wrap | | 1 min 52 s | 1.4 GB host, 8.9 GB container |
-| checkpoint n=7 plus change | composite, 2^19 segments (6 Nov, before the fix) | 18 | 41 min | 4.8 GB |
-| checkpoint n=7 plus change | succinct (6 Nov, before the fix) | | 14.3 min | 1.5 GB |
+| checkpoint n=7 plus change | composite, 2^19 segments | 20 | 44 min | 4.8 GB |
+| checkpoint n=7 plus change | succinct | | 15.5 min | 1.5 GB |
 
 Each wrap is about 97 seconds of recursion on the host, then about 15 seconds in the gnark container. The container is not pinned to four cores, and its peak is its cgroup's `memory.peak`, which includes page cache from reading the proving key. The wrap's cost does not depend on the guest, so a wrap of the key-set change case should match the other two. It was not run.
 
