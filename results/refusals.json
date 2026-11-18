@@ -1,0 +1,17 @@
+[
+  {
+    "case": "release32-index-above-depth",
+    "error": "Guest panicked: index outside the tree",
+    "refused": true
+  },
+  {
+    "case": "checkpoint4-duplicate-key",
+    "error": "Guest panicked: duplicate key",
+    "refused": true
+  },
+  {
+    "case": "checkpoint4-change-replayed",
+    "error": "Guest panicked: assertion `left == right` failed: key-set change out of sequence\n  left: 7\n right: 8",
+    "refused": true
+  }
+]

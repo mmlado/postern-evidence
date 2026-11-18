@@ -1,60 +1,60 @@
 {
-  "anvil": "{\"currentBlockNumber\":\"0x4\",\"currentBlockTimestamp\":1793979227,\"currentBlockHash\":\"0x8a656325892a4ceffb8881f1cf0e20499473ef7ed72911c13f8d43943c80424c\",\"hardFork\":\"Bpo1\",\"transactionOrder\":\"fees\",\"environment\":{\"baseFee\":\"0x23aeb87d\",\"chainId\":31337,\"gasLimit\":\"0x1c9c380\",\"gasPrice\":\"0x5f49827d\"},\"forkConfig\":{\"forkUrl\":null,\"forkBlockNumber\":null,\"forkRetryBackoff\":null},\"network\":\"ethereum\"}",
+  "anvil": "{\"currentBlockNumber\":\"0x1\",\"currentBlockTimestamp\":1795014922,\"currentBlockHash\":\"0xcb5769b400ef26ea104501bd6c7130f5286c2cf80b40c2d1f2b1fea6301aefef\",\"hardFork\":\"Bpo1\",\"transactionOrder\":\"fees\",\"environment\":{\"baseFee\":\"0x34fe2692\",\"chainId\":31337,\"gasLimit\":\"0x1c9c380\",\"gasPrice\":\"0x7098f092\"},\"forkConfig\":{\"forkUrl\":null,\"forkBlockNumber\":null,\"forkRetryBackoff\":null},\"network\":\"ethereum\"}",
   "r0_selector": "0x73c457ba",
   "release32": {
-    "tx": "0xcaea30896a16aa0a628e059018eb1d71555cd68e8f6126afeb6e2c446bba2284",
-    "eth_estimateGas": 256164,
-    "gas_used": 250164,
+    "tx": "0x2c52de26594abe5f0034971b9cb29e1d7c66d25f7e329a3222c9916ea00f4d86",
+    "eth_estimateGas": 256176,
+    "gas_used": 250176,
     "calldata": {
       "bytes": 420,
-      "standard": 5640,
-      "eip7623_floor_tokens": 1410
+      "standard": 5652,
+      "eip7623_floor_tokens": 1413
     },
     "execution": 223524,
     "rejects_wrong_journal": true,
     "journal": {
       "as_committed": {
-        "bytes": 356,
-        "standard": 2516,
-        "eip7623_floor_tokens": 629,
-        "sha256_precompile": 204
+        "bytes": 568,
+        "standard": 4000,
+        "eip7623_floor_tokens": 1000,
+        "sha256_precompile": 276
       },
       "packed": {
-        "bytes": 104,
-        "standard": 1508,
-        "eip7623_floor_tokens": 377,
-        "sha256_precompile": 108
+        "bytes": 160,
+        "standard": 2368,
+        "eip7623_floor_tokens": 592,
+        "sha256_precompile": 120
       }
     }
   },
   "checkpoint7": {
-    "tx": "0x92deb9f82fd84bbe99771cc72a3f56efbd5220799592322570a7a1455b4867a0",
-    "eth_estimateGas": 256164,
-    "gas_used": 250164,
+    "tx": "0xe295d88c272657931951166a6ccdf0e213453547dd957565add73cc869e4e356",
+    "eth_estimateGas": 256152,
+    "gas_used": 250152,
     "calldata": {
       "bytes": 420,
-      "standard": 5640,
-      "eip7623_floor_tokens": 1410
+      "standard": 5628,
+      "eip7623_floor_tokens": 1407
     },
     "execution": 223524,
     "rejects_wrong_journal": true,
     "journal": {
       "as_committed": {
-        "bytes": 648,
-        "standard": 4548,
-        "eip7623_floor_tokens": 1137,
-        "sha256_precompile": 312
+        "bytes": 776,
+        "standard": 5444,
+        "eip7623_floor_tokens": 1361,
+        "sha256_precompile": 360
       },
       "packed": {
-        "bytes": 168,
-        "standard": 2628,
-        "eip7623_floor_tokens": 657,
-        "sha256_precompile": 132
+        "bytes": 200,
+        "standard": 3140,
+        "eip7623_floor_tokens": 785,
+        "sha256_precompile": 144
       }
     }
   },
   "circom_release32": {
-    "tx": "0x6013bd3149e6db109bf506c1d1d942fe475f684de6242f7b8cb4216254002a22",
+    "tx": "0xe58bc948f4bb4ef278f4a703b39c4d7174e7f98a91a8e48e52b95def4d4cfbd3",
     "eth_estimateGas": 36189,
     "gas_used": 241652,
     "calldata": {

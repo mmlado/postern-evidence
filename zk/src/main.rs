@@ -39,7 +39,14 @@ fn signing_keys(n: usize, seed: u8) -> Vec<SigningKey> {
         .collect()
 }
 
+const EPOCH: u64 = 7;
+const CONFIG: [u8; 32] = [0xC0; 32];
+
 fn checkpoint_input(n: usize, with_change: bool) -> CheckpointInput {
+    checkpoint_input_at(n, with_change, EPOCH + 1)
+}
+
+fn checkpoint_input_at(n: usize, with_change: bool, change_epoch: u64) -> CheckpointInput {
     let t = |n: usize| -> u16 { ((2 * n).div_ceil(3)).min(n.saturating_sub(1)).max(1) as u16 };
     let old = signing_keys(n, 1);
     let old_pub: Vec<Key> = old.iter().map(|k| k.verifying_key().to_bytes()).collect();
@@ -48,7 +55,7 @@ fn checkpoint_input(n: usize, with_change: bool) -> CheckpointInput {
         let mut new = signing_keys(n, 2);
         new.truncate(n);
         let new_pub: Vec<Key> = new.iter().map(|k| k.verifying_key().to_bytes()).collect();
-        let op = encode_config_op(&new_pub, t(n), 256);
+        let op = encode_config_op(&new_pub, t(n), change_epoch, 256);
         let digest: [u8; 32] = {
             use blake2::{digest::consts::U32, Blake2b, Digest};
             Blake2b::<U32>::digest(&op).into()
@@ -61,13 +68,15 @@ fn checkpoint_input(n: usize, with_change: bool) -> CheckpointInput {
         (old_pub, t(n), old, None)
     };
     let cur_pub: Vec<Key> = cur.iter().map(|k| k.verifying_key().to_bytes()).collect();
+    let cur_epoch = if with_change { change_epoch } else { EPOCH };
     let checkpoint = Checkpoint {
+        config: CONFIG,
         channel_id: [0xAB; 32],
         block_id: 123_456,
         block_hash: [0x11; 32],
         burn_root: [0x22; 32],
     };
-    let msg = checkpoint_message(&keyset_hash(&cur_pub, threshold), &checkpoint);
+    let msg = checkpoint_message(&keyset_hash(&cur_pub, threshold, cur_epoch), &checkpoint);
     // Signers taken from the top of the list, to show any index set works.
     let sigs = (0..threshold as usize)
         .map(|j| {
@@ -75,11 +84,13 @@ fn checkpoint_input(n: usize, with_change: bool) -> CheckpointInput {
             (i as u16, cur[i].sign(&msg).to_bytes().to_vec())
         })
         .collect();
-    CheckpointInput { keys, threshold, change, checkpoint, sigs }
+    CheckpointInput { keys, threshold, epoch: EPOCH, change, checkpoint, sigs }
 }
 
 fn release_input(depth: usize) -> ReleaseInput {
     ReleaseInput {
+        config: CONFIG,
+        token: [0x7E; 20],
         nullifier_secret: [7; 32],
         blinding: [9; 32],
         dest: [0x42; 20],
@@ -115,7 +126,7 @@ fn case(name: &str) -> Result<(&'static [u8], [u32; 8], ExecutorEnv<'static>)> {
         b.write(&checkpoint_input(n.parse()?, change))?;
         (CHECKPOINT_ELF, CHECKPOINT_ID)
     } else if let Some(d) = name.strip_prefix("release") {
-        b.write(&release_input(d.parse()?))?;
+        b.stdin(std::io::Cursor::new(release_input(d.parse()?).to_bytes()));
         (RELEASE_ELF, RELEASE_ID)
     } else if let Some(sz) = name.strip_prefix("fallback") {
         let bytes = fallback_bytes(sz.parse::<usize>()? * 1024);
@@ -129,6 +140,46 @@ fn case(name: &str) -> Result<(&'static [u8], [u32; 8], ExecutorEnv<'static>)> {
     };
     Ok((elf, id, b.build()?))
 }
+
+/// Inputs the guests must refuse, one per bug fixed on 2026-11-18.
+fn refusal_case(name: &str) -> Result<(&'static [u8], ExecutorEnv<'static>)> {
+    let mut b = ExecutorEnv::builder();
+    let elf = match name {
+        "release32-index-above-depth" => {
+            let mut input = release_input(32);
+            input.index |= 1 << 32;
+            b.stdin(std::io::Cursor::new(input.to_bytes()));
+            RELEASE_ELF
+        }
+        "checkpoint4-duplicate-key" => {
+            // Key 1 repeats key 2, so two holders would pass a threshold of three.
+            let sk = signing_keys(4, 1);
+            let mut keys: Vec<Key> = sk.iter().map(|k| k.verifying_key().to_bytes()).collect();
+            keys[1] = keys[2];
+            let checkpoint = Checkpoint {
+                config: CONFIG,
+                channel_id: [0xAB; 32],
+                block_id: 123_456,
+                block_hash: [0x11; 32],
+                burn_root: [0x22; 32],
+            };
+            let msg = checkpoint_message(&keyset_hash(&keys, 3, EPOCH), &checkpoint);
+            let sig = |i: usize| sk[i].sign(&msg).to_bytes().to_vec();
+            let sigs = vec![(3, sig(3)), (2, sig(2)), (1, sig(2))];
+            b.write(&CheckpointInput { keys, threshold: 3, epoch: EPOCH, change: None, checkpoint, sigs })?;
+            CHECKPOINT_ELF
+        }
+        "checkpoint4-change-replayed" => {
+            b.write(&checkpoint_input_at(4, true, EPOCH))?;
+            CHECKPOINT_ELF
+        }
+        other => anyhow::bail!("unknown refusal case {other}"),
+    };
+    Ok((elf, b.build()?))
+}
+
+const REFUSAL_CASES: &[&str] =
+    &["release32-index-above-depth", "checkpoint4-duplicate-key", "checkpoint4-change-replayed"];
 
 const EXEC_CASES: &[&str] = &[
     "checkpoint3", "checkpoint4", "checkpoint5", "checkpoint7", "checkpoint10", "checkpoint16",
@@ -171,6 +222,17 @@ fn main() -> Result<()> {
                 }));
             }
             fs::write("../results/cycles.json", serde_json::to_string_pretty(&rows)?)?;
+            let mut refusals = Vec::new();
+            for name in REFUSAL_CASES {
+                let (elf, env) = refusal_case(name)?;
+                let err = match default_executor().execute(env, elf) {
+                    Ok(_) => anyhow::bail!("{name}: the guest accepted an input it must refuse"),
+                    Err(e) => format!("{e:#}"),
+                };
+                println!("{name:<30} refused: {}", err.lines().next().unwrap_or(""));
+                refusals.push(serde_json::json!({ "case": name, "refused": true, "error": err }));
+            }
+            fs::write("../results/refusals.json", serde_json::to_string_pretty(&refusals)?)?;
         }
         Cmd::Prove { case: name, stage, dir } => {
             fs::create_dir_all(&dir)?;

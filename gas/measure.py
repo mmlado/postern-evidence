@@ -53,8 +53,8 @@ def final_return(tx):
 # Field layout of the committed struct: ("b", n) is a byte array (one u32 word per byte),
 # ("w", n) is an integer of n words.
 LAYOUT = {
-    "release32": [("b", 32), ("b", 32), ("b", 20), ("w", 4), ("w", 1)],
-    "checkpoint7": [("b", 32), ("b", 32), ("b", 32), ("w", 2), ("b", 32), ("b", 32)],
+    "release32": [("b", 32), ("b", 20), ("b", 32), ("b", 32), ("b", 20), ("w", 4), ("w", 1), ("w", 1)],
+    "checkpoint7": [("b", 32), ("b", 32), ("b", 32), ("b", 32), ("w", 2), ("b", 32), ("b", 32)],
 }
 
 

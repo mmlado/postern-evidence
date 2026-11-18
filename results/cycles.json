@@ -1,54 +1,73 @@
 [
   {
     "case": "checkpoint3",
-    "exec_ms": 68,
+    "exec_ms": 75,
     "segment_po2": [
       20,
       20
     ],
     "segments": 2,
-    "user_cycles": 1663188
+    "user_cycles": 1788122
   },
   {
     "case": "checkpoint4",
-    "exec_ms": 100,
+    "exec_ms": 105,
     "segment_po2": [
       20,
       20,
       20
     ],
     "segments": 3,
-    "user_cycles": 2492695
+    "user_cycles": 2651822
   },
   {
     "case": "checkpoint5",
-    "exec_ms": 120,
+    "exec_ms": 124,
     "segment_po2": [
       20,
       20,
       20,
-      19
+      20
     ],
     "segments": 4,
-    "user_cycles": 3316809
+    "user_cycles": 3497316
   },
   {
     "case": "checkpoint7",
-    "exec_ms": 145,
+    "exec_ms": 144,
     "segment_po2": [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "segments": 5,
+    "user_cycles": 4379197
+  },
+  {
+    "case": "checkpoint10",
+    "exec_ms": 188,
+    "segment_po2": [
+      20,
+      20,
       20,
       20,
       20,
       20,
       19
     ],
-    "segments": 5,
-    "user_cycles": 4126541
+    "segments": 7,
+    "user_cycles": 6151866
   },
   {
-    "case": "checkpoint10",
-    "exec_ms": 183,
+    "case": "checkpoint16",
+    "exec_ms": 263,
     "segment_po2": [
+      20,
+      20,
+      20,
+      20,
       20,
       20,
       20,
@@ -56,42 +75,24 @@
       20,
       20
     ],
-    "segments": 6,
-    "user_cycles": 5743162
-  },
-  {
-    "case": "checkpoint16",
-    "exec_ms": 249,
-    "segment_po2": [
-      20,
-      20,
-      20,
-      20,
-      20,
-      20,
-      20,
-      20,
-      20,
-      18
-    ],
     "segments": 10,
-    "user_cycles": 8984927
+    "user_cycles": 9611747
   },
   {
     "case": "checkpoint3-change",
-    "exec_ms": 122,
+    "exec_ms": 127,
     "segment_po2": [
       20,
       20,
       20,
-      19
+      20
     ],
     "segments": 4,
-    "user_cycles": 3361039
+    "user_cycles": 3615788
   },
   {
     "case": "checkpoint7-change",
-    "exec_ms": 233,
+    "exec_ms": 243,
     "segment_po2": [
       20,
       20,
@@ -101,28 +102,29 @@
       20,
       20,
       20,
-      19
+      20,
+      17
     ],
-    "segments": 9,
-    "user_cycles": 8265200
+    "segments": 10,
+    "user_cycles": 8786976
   },
   {
     "case": "release20",
-    "exec_ms": 22,
+    "exec_ms": 18,
     "segment_po2": [
-      18
+      17
     ],
     "segments": 1,
-    "user_cycles": 145644
+    "user_cycles": 50507
   },
   {
     "case": "release32",
-    "exec_ms": 24,
+    "exec_ms": 18,
     "segment_po2": [
-      18
+      17
     ],
     "segments": 1,
-    "user_cycles": 216120
+    "user_cycles": 67756
   },
   {
     "case": "poseidon1",
@@ -136,7 +138,7 @@
   },
   {
     "case": "poseidon20",
-    "exec_ms": 558,
+    "exec_ms": 590,
     "segment_po2": [
       20,
       20,
@@ -176,7 +178,7 @@
   },
   {
     "case": "poseidon32",
-    "exec_ms": 886,
+    "exec_ms": 898,
     "segment_po2": [
       20,
       20,
@@ -244,7 +246,7 @@
   },
   {
     "case": "fallback64",
-    "exec_ms": 129,
+    "exec_ms": 125,
     "segment_po2": [
       20,
       20,
@@ -258,7 +260,7 @@
   },
   {
     "case": "fallback1024",
-    "exec_ms": 1348,
+    "exec_ms": 1377,
     "segment_po2": [
       20,
       20,
