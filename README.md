@@ -2,7 +2,7 @@
 
 Measurements behind Moonstruck's proposal for Logos RFP-022, the privacy-preserving wrapped ERC-20 and ether bridge for LEZ. Postern escrows ERC-20s and ether in an Ethereum vault, mints wrapped tokens on LEZ, and releases the original against a LEZ burn proven natively on Ethereum. This spike measures that outbound leg. It was first run on 2026-11-06. On 2026-11-18 three bugs in its guests were fixed and every figure below was measured again, see [Fixed on 18 Nov](#fixed-on-18-nov-2026).
 
-The proposal this evidence supports is [logos-co/rfp#NNN](https://github.com/logos-co/rfp/issues/NNN).
+The proposal this evidence supports is [logos-co/rfp#279](https://github.com/logos-co/rfp/issues/279).
 
 ## What was measured
 
